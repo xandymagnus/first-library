@@ -23,12 +23,19 @@ function paragraphBreak (text) {
     console.log(count);
 }
 
+function cleanWords(word) {
+    return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+}
+
 function verifyDupiclateWords (text) {
     const wordList = text.split(' ');
     const result = {};
     // object[propriety] = value;
     wordList.forEach(word => {
-        result[word] = (result[word] || 0) + 1;
+        if ( word.length >= 3 ) {
+            const cleanWord = cleanWords(word);
+            result[cleanWord] = (result[cleanWord] || 0) + 1;
+        }
     })
     return result;
 }
