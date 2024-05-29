@@ -17,11 +17,13 @@ fs.readFile(link, 'UTF-8', (erro, text) => {
 
 function paragraphBreak (text) {
     const paragraphs =  text.toLowerCase().split('\n');
-    const count = paragraphs.map((paragraph) => {
+    const count = paragraphs.flatMap((paragraph) => {
+        if ( !paragraph ) return [];
         return verifyDupiclateWords(paragraph); 
     })
-    console.log(count);
+    console.log(count)
 }
+        
 
 function cleanWords(word) {
     return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
