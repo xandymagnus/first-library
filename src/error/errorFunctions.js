@@ -1,4 +1,4 @@
-function handleErrors (erro) {
+export default function handleErrors (erro) {
     if (erro.code === 'ENOENT') {
         throw new Error('file not found');
     } else {
@@ -6,4 +6,3 @@ function handleErrors (erro) {
     }
 }
 
-module.exports = handleErrors;
