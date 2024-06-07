@@ -1,6 +1,4 @@
-const { log, error } = require('console');
 const fs = require('fs');
-const { text } = require('stream/consumers');
 
 const handleErrors = require('./error/errorFunctions');
 
@@ -8,7 +6,6 @@ const filePath = process.argv;
 const link = filePath[2];
 
 fs.readFile(link, 'UTF-8', (erro, text) => {
-    
     try {
         if (erro) throw erro
         countWords(text);
