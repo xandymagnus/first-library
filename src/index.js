@@ -6,6 +6,11 @@ const filePath = process.argv;
 const link = filePath[2];
 
 fs.readFile(link, 'UTF-8', (erro, text) => {
+    if (erro) {
+       console.log('What is the error?', erro.code);
+       return 
+    }
+
     countWords(text);
 })
 
