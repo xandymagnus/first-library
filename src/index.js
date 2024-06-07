@@ -1,10 +1,10 @@
-function countWords (text) {
+export function countWords (text) {
     const paragraphs = extractParagraphs(text)
     const count = paragraphs.flatMap((paragraph) => {
         if ( !paragraph ) return [];
         return verifyDupiclateWords(paragraph); 
     })
-    console.log(count)
+    return (count);
 }
 
 function extractParagraphs (text) {
