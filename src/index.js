@@ -6,22 +6,24 @@ const filePath = process.argv;
 const link = filePath[2];
 
 fs.readFile(link, 'UTF-8', (erro, text) => {
-    paragraphBreak(text)
-    // verifyDupiclateWords(text)
+    countWords(text);
 })
 
-// {
-//     "web": 5,
-//     "desktop": 4
-// }
-
-function paragraphBreak (text) {
-    const paragraphs =  text.toLowerCase().split('\n');
+function countWords (text) {
+    const paragraphs = extractParagraphs(text)
     const count = paragraphs.flatMap((paragraph) => {
         if ( !paragraph ) return [];
         return verifyDupiclateWords(paragraph); 
     })
     console.log(count)
+}
+
+function extractParagraphs (text) {
+    return text.toLowerCase().split('\n');
+}
+
+function paragraphBreak (text) {
+
 }
         
 
