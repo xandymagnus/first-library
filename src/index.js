@@ -1,17 +1,20 @@
-const { log } = require('console');
+const { log, error } = require('console');
 const fs = require('fs');
 const { text } = require('stream/consumers');
+
+const handleErrors = require('./error/errorFunctions');
 
 const filePath = process.argv;
 const link = filePath[2];
 
 fs.readFile(link, 'UTF-8', (erro, text) => {
-    if (erro) {
-       console.log('What is the error?', erro.code);
-       return 
+    
+    try {
+        if (erro) throw erro
+        countWords(text);
+    } catch(erro) {
+        handleErrors(erro);
     }
-
-    countWords(text);
 })
 
 function countWords (text) {
